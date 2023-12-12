@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced Functions</title>
+  <!-- functions are values -->
+</head>
+<body>
+  <button class="js-button" onclick="">Click</button>
+
+  <script>
+    const buttonElement = document.querySelector('.js-button');
+
+    //++++++++++++++++++ .addEventListener() ++++++++++++++++
+    //__lets us run some code when we interact with the element.same thing as onclick. have two parameters first is event (what type interaction we want to listen) and second parameter is function we want to run.
+
+    buttonElement.addEventListener('click', () => { //...this code does the same thing as the onclick attribute. and has multiple advantages it lets us add multiple eventListeners for an event.we can remove an eventListener.
+      console.log('click');
+    });
+
+    const eventListener = () => {
+      console.log('click2');
+    };
+
+    buttonElement.addEventListener('click', eventListener);
+    buttonElement.removeEventListener('click', eventListener);
+
+    //Hoisting --> which means we can call the function before we created. using hoisting we don't need to worry about the order of writing code.
+
+    greeting();
+    function greeting(){
+      console.log('hello');
+    }
+    greeting(); //calling the function. function are values.
+
+    //++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    //Hoisting Doesn't work when we create a function and save it in a variable. like below
+    const function1 = function(){ //Now this is become a Anonymous function which means function without a name.
+      console.log('hello2');
+    };
+    console.log(function1);
+    console.log(typeof function1);
+    function1();
+
+
+    const object1 = {
+      num: 2,
+      //method --> function inside an object.
+      fun: function (){ //anonymous function
+        console.log('hello3');
+      }
+    };
+    object1.fun();
+
+
+    //Passing a function into an another function
+    function run(param){
+      param();
+    }
+    run(function(){  //callback function
+      console.log('hello4');
+    });
+
+    //++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    //setTimeout() --> allows us to run a function in the future.built-in function.takes two parameter first parameter is a function that we want to run in the future. The second parameter is how long to wait before running this function(a number in milliseconds).1000 milliseconds = 1 second.
+    setTimeout(function(){
+      console.log('timeout');
+      console.log('timeout2');
+    }, 3000);
+
+    //Asynchronous code --> the computer won't wait for a line to finish before going to the next line. eg: setTimeout() [Advantage: it doesn't block our code for 3 seconds].
+
+    //Synchronous code --> the computer will wait for a line to finish before going to the next line.
+
+    //All the code we normally write is synchronous code.
+    console.log('next line');
+
+    setInterval(function(){  // This will run the after every 3 seconds.
+      console.log('interval'); 
+    }, 3000);
+    console.log('next line 2');
+
+   //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    [
+      'make dinner',
+      'wash dishes',
+      'watch youtube'
+    ].forEach((value, index) => {  // forEach() method allows us to loop through this array.It is the preferred way to loop through an array.because it is easier to read.
+
+      if(value === 'wash dishes'){
+        return;  // this will do the same thing as continue do in for loop.skip this value.
+      }
+      console.log(index);
+      console.log(value);
+    });
+
+    //forEach() method don't have continue but we can do the same thing by using return statement.
+
+    //+++++++++++++++++++ Arrow Functions ++++++++++++++++++
+
+    const regularFunction = function (param, param2){ // regular functions enable hoisting.
+      console.log('hello');
+      return 5;
+    }
+    regularFunction();
+
+    const arrowFunction = (param, param2) => { // arrow function uses => instead of function keyword.
+      console.log('hello');
+      return 5;
+    }
+    arrowFunction();
+
+    // ++++++++ Arrow function have few shortcuts but regular function don't ++++++++.
+
+    const oneParam = param => { // when arrow function have only one parameter then brackets are optional.
+      console.log(param + 1);
+    }
+    oneParam(2);
+
+    const oneLine = () =>  1 + 3;  // when arrow function have only one line code then curly brackets are optional.and we can remove return statement as well.this is a oneLine arrow function.
+    console.log(oneLine());
+
+    const object2 = {
+      method: () => {
+
+      },
+      method() { // Shorthand Method. this is same as above method.
+
+      }
+    };
+
+    //+++++++++++++++++++ Array Methods ++++++++++++++++++
+    // .forEach()
+
+    // .filter() ==> it will create a new array[], if inner function return true --> it will put the value in a new array, if inner function return false --> it will not put the value in a new array, works like .forEach()
+
+    // .map() ==> works like .forEach(), Creates a new Array and whatever we return ==> added to new array, Transform an array into another array based on the return statement.
+
+
+
+    console.log([1, -3, 5].filter((value, index) => { // So filter() takes the first value and save it in the value parameter, and run the function and further do similar thing.
+      /*
+      if(value >= 0){
+        return true;
+      }else{
+        return false;
+      }
+      */
+      return value >= 0; // This line is same as above code.
+    }));
+
+
+
+    console.log([1, 1, 3].map((value, index) => { // So map() takes the first value and save it in the value parameter, and run the function and further do similar thing.
+      return value * 2;
+    }));
+
+    console.log([1, 1, 3].map(value => value * 2)); // Shorthand for above code.
+
+
+    //+++++++++++++++++++ Closure ++++++++++++++++++++
+    // if a function has access to a value.
+    // it will always have access to that value.
+    // value gets packaged together (enclosed) with the function.
+
+  </script>
+</body>
+</html>

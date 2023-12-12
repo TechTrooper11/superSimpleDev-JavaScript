@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <button onkeydown="handleKeyDown(event)">Submit</button>
+
+  <p class="js-result"></p>
+
+  <input type="text" class="js-input-tester" placeholder="Type Here">
+  <button onclick="inputElement(4);">4</button>
+  <button onclick="inputElement('+');">+</button>
+  <button onclick="inputElement(5);">5</button>
+
+  <script>
+    function handleKeyDown(event){
+      if(event.key === 'Enter'){
+        document.querySelector('.js-result').innerHTML = 'submitted.'
+      }
+    }
+
+    function inputElement(value){
+      document.querySelector('.js-input-tester').value = value;
+    }
+  </script>
+</body>
+</html>

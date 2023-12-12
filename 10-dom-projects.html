@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>DOM Projects</title>
+  <style>
+    body{
+      padding-top: 5px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 18px;
+      margin-bottom: 400px;
+    }
+
+    .subscribe-button{
+      border: none;
+      background-color: black; 
+      color: white;
+      padding: 10px 15px;
+      font-weight: 500;
+      font-size: 16px;
+      border-radius: 50px;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+  
+    .is-subscribed{
+      background-color: rgb(240, 240, 240);
+      color: black;
+    }
+
+    .cost-input{
+      font-size: 15px;
+      padding: 10px;
+    }
+
+    .calculate-button{
+      background-color: green;
+      color: #ffff;
+      border: none;
+      font-size: 15px;
+      padding: 12px 15px;
+      cursor: pointer;
+    }
+  </style>
+
+
+</head>
+<body>
+  <P>YouTube Subscribe Button</P>
+  <button onclick="subscribe();
+  " class="js-subscribe-button subscribe-button">Subscribe</button>
+
+  <br>
+  <br>
+  <br>
+
+  <p>Rock Paper Scissors</p>
+  <a href="">Click here</a>
+
+  <br>
+  <br>
+  <br>
+  
+  <P>Amazon Shipping Calculator</P>
+  <p>Order under $40 = +$10 shipping.</p>
+  <p>Order over $40 = FREE shipping.</p>
+
+  <input type="display" placeholder="Cost of order" class="js-cost-input cost-input" onkeydown="
+  handleCostKeyDown(event);
+  ">
+
+  <button onclick="
+  calculateTotal();
+  " class="calculate-button">Calculate</button>
+  <p class="js-total-cost"></p>
+  <script>
+    //if a string contain only a number, and we -*/ => ti will converted into a number.
+    //Type Coersion => automatic type conversion. Don't do maths using string.
+    string(25);
+    console.log('25' - 5); //this will work.
+    console.log('25' + 5); //but this will not work. that's wy don't do maths using string.
+
+
+    //Document Object represent the WebPage.
+    //Window Object represent the Browser. which means everything inside the browser is inside the window Object.
+    window.document // Javascript has shortcut for this you can write document only javascript will automatically write window for us.
+    
+
+    // Object provided by javascript and it contain the information about the event. Every eventListeners also get the event object. (event.key) will tell us which key is pressed by us on keyboard.
+
+    function handleCostKeyDown(event){ // this will take the event object and put it inside the function.
+
+      if(event.key === 'Enter'){
+      calculateTotal();
+      }
+    }
+
+    function calculateTotal(){
+      const inputElement = document.querySelector('.js-cost-input');
+      let cost =Number(inputElement.value);  // This will give us the text inside the text box. The value would be a string if we don't apply Number() --> a function.
+
+      //Whenever we get a value from a DOM the value will be a string. We have to manually convert the value according to our need.
+
+      //onkeydown Attribute will help us to run javascript when we press any key on keyboard.
+
+      //clicks, keydowns => events
+      //onclick, onkeydown => event listeners means they check the event and runs javascript when those events happens.
+
+      // Event listeners
+      //onclick = click
+      //onkeydown = key press
+      //onscroll = scrolling
+      //onmouseenter = hovering over
+      //onmouseleave = stop hovering over
+
+
+      if(cost < 40){
+        cost += 10;
+        cost = cost.toFixed(2);
+        cost = Number(cost);
+      }
+
+      document.querySelector('.js-total-cost')
+        .innerHTML = `$${cost}`;
+    }
+    
+    //.classList --> gives us control of the class attribute.It is  an object. 
+    //.add() => add a class to our element.
+
+    function subscribe(){
+      const buttonElement = document.querySelector('.js-subscribe-button');
+
+      if(buttonElement.innerText === 'Subscribe'){
+        buttonElement.innerHTML = 'Subscribed';
+        buttonElement.classList.add('is-subscribed');
+      } else {
+        buttonElement.innerHTML = 'Subscribe';
+        buttonElement.classList.remove('is-subscribed')
+      }
+    }
+  </script>
+</body>
+</html>

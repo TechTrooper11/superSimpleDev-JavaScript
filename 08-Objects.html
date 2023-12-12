@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Objects</title>
+</head>
+<body>
+  
+  <script>
+    const product = {
+      name: 'socks', //property value pair
+      price: 1090
+    }
+
+    console.log(product);
+    console.log(product.name); //Dot Notation
+    console.log(product.price);
+
+    product.name = 'cotton socks';
+    console.log(product);
+
+    product.newProperty = true;
+    console.log(product);
+
+    delete product.newProperty;
+    console.log(product);
+
+
+    const product2 = {
+      name: 'shirt',
+      'delivery-time': '1 day', //['delivery-time']: '1 day'
+      rating: {
+        stars: 4.5,
+        count: 87
+      },
+      fun: function function1(){
+        console.log("Function inside Object");
+      }
+
+    };
+
+    console.log(product2.name);
+    console.log(product2['name']);
+    console.log(product2['delivery-time']); // another way to fetch property value in object 
+
+    console.log(product2.rating.stars);
+    console.log(product2.rating.count);
+
+    product2.fun();
+
+    //function inside object is method
+
+    console.log(typeof console.log); //method //built-in objects
+    console.log(typeof Math.random()); //method //built-in objects
+    
+    //JSON
+    // javascript Object Notation does not support function and single quotes and it is universal.use when we store data
+    // -a syntax
+    // -similar to javascript objects
+    // -but has less features
+
+    console.log(JSON.stringify(product2)); //convert the code into JSON format
+    console.log(typeof JSON.stringify(product2)); //-string
+
+    const jsonString = JSON.stringify(product2);
+
+    console.log(JSON.parse(jsonString)); //convert back the code into
+    console.log(typeof JSON.parse(jsonString)); //- object
+  
+    // localStorage
+    // only supports string
+    // localStorage saves a value more permanently
+    // if we refresh/close the page all the variables are deleted
+
+    localStorage.setItem('message', 'hello'); //saves value in localStorage
+
+    console.log(localStorage.getItem('message')); //get value out of localStorage or read data from localStorage
+
+    // Falsy Values --> false  0  ''  NaN  undefined  null
+    // we will use null if we intentionally want something to be null
+
+    function func(parameter = 'default'){
+      console.log(parameter);
+    }
+
+    func();  // 'default'
+    func(undefined); // 'default'
+
+    func(null); // null
+    
+
+    //AUTO-BOXING
+    console.log('hello'.length);
+    console.log('hello'.toUpperCase());
+
+    // COPY BY REFERENCES
+    const object1 = {
+      message: 'hello'
+    };
+
+    const object2 = object1;
+
+    object1.message = 'good job!';
+    console.log(object1);
+    console.log(object2);
+
+    // WE CANNOT COMPARE OBJECTS DIRECTLY 
+
+    const object3 = {
+      message: 'good job'
+    };
+
+    console.log(object3 === object1); //compare references not values
+    console.log(object2 === object1);
+
+    //Destructuring--> easier way to take property out of the object
+    const object4 = {
+      message: 'Good Morning',
+      price: 799
+    };
+
+    // const message = object4.message;
+    const {message,price} = object4;
+    console.log(message);
+    console.log(price);
+    
+    // Shorthand property
+    const object5 = {
+      // message: message
+      message, 
+      method: function function1(){
+        console.log('method');
+      }
+    };
+
+    console.log(object5);
+    object5.method();
+      
+  </script>
+</body>
+</html>

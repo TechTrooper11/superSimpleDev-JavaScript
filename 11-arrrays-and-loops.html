@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<head>
+  <title>Arrays and Loops</title>
+</head>
+<body>
+  
+  <script>
+    //Arrrays --> another type of value and it represents a list of values.we use this bracket for array [] , inside an array we can put any type of value. array is an special type of objects.
+
+    const myArray = [10, 20, 30];
+    console.log(myArray);
+
+    console.log(myArray[0]);
+    myArray[0] = 99; //changing value in array 0 represents index.Zero based counting.
+    console.log(myArray);
+
+    [1, 'hello', true, { name: 'socks'}, [1, 2]];
+    console.log(typeof [1, 2]); //object
+
+    //something is array or not.
+    console.log(Array.isArray[1, 2]);
+
+    //Arrays has properties and methods.
+    console.log(myArray.length);
+
+    //.push() => adds a value to the end of the Array.
+    myArray.push(100);
+    console.log(myArray);
+
+    //.splice() => removes a  value from an array. splice takes two number first one is index and second one is Number of values to remove.
+    myArray.splice(0, 2);
+    console.log(myArray);
+
+
+    //Loops and 3 major parts of a loop.
+    //every time we run the loop this is called iteration.so there are 5 iteration.
+
+    let i = 1; //loop variable
+
+    while(i <= 5){ //loop condition
+      console.log(i);
+      i++; //increment step
+    }
+
+
+    ///for loop => standard loop.
+    for(let i = 1; i <= 5; i++){
+      console.log(i);
+    }
+
+    //Non-standard loop.bit more flexible
+    let randomNumber = 0;
+    while(randomNumber < 0.5){
+      randomNumber = Math.random();
+    }
+    console.log(randomNumber);
+
+    //Looping through an Array.
+    const todoList = [
+      'make dinner',
+      'wash dishes',
+      'watch youtube'
+    ];
+
+    for(let i = 0; i < todoList.length; i++){
+      const value = todoList[i];
+      console.log(value);
+    }
+
+    //Accumulator pattern
+    //1. Create a variable to store the result.
+    //2. Loop through the array and update the result.
+    
+    const nums = [1, 1, 3];
+    let total = 0; //Accumulator variable to store result.
+
+    for (let i = 0; i < nums.length; i++){
+      const num = nums[i];
+      total += num;
+    }
+    console.log(total);
+
+
+    const numsDoubled = [];
+
+    for(let i = 0; i < nums.length; i++){
+      const num = nums[i];
+      numsDoubled.push(num * 2);
+    }
+
+    console.log(numsDoubled);
+
+    //Arrays and Objects are references.
+    const array1 = [1, 2, 3];
+    const array2 = array1.slice(); // this will create a copy of values in array1 and now these two variables point to two different arrays. [.splice() -->Remove values and .slice() are two different things]
+
+    array2.push(4); // now this line will only affect array.
+    console.log(array1);
+    console.log(array2);
+
+    //By using destructuring.
+    //Get first and second value
+    const [firstValue, secondValue] = [4, 2, 3]; // this will take first value out of the array and put it inside the variable firstValue and so on...
+    console.log(firstValue);
+    console.log(secondValue);
+
+
+    // break => let us stop a loop early.
+    // continue lets us skip 1 iteration/run of a loop.
+    for(let i = 1; i <= 10; i++){
+      if(i % 3 === 0){
+        continue;
+      }
+      console.log(i);
+      if(i === 8){
+        break;
+      }
+    }
+
+    let a = 1;
+    while(a <= 10){
+      if(a % 3 === 0){ // in a while loop continue also skip increment step this will cause a infinte loop.
+        a++;
+        continue;
+      }
+      console.log(a);
+      a++;
+    }
+
+
+    function doubleArray(nums){
+      const numsDoubled = [];
+
+      for(let i = 0; i < nums.length; i++){
+        const num = nums[i];
+        if(num === 0){
+          return numsDoubled; // this will end the loop immediately.
+        }
+        numsDoubled.push(num * 2);
+      }
+      return numsDoubled;
+    }
+
+    console.log(doubleArray([1,1,3,0,5]));
+
+  </script>
+</body>
+</html>

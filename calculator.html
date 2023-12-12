@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Calculator</title>
+</head>
+
+<style>
+  body{
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .button{
+    height: 50px;
+    width: 50px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    font-weight: 500;
+    font-size: 20px;
+    background-color: white;
+    box-shadow: none;
+    border-color: rgb(165, 161, 161);
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .button:active{
+    animation: gradient 100ms;
+    background-color: rgb(66, 133, 244);
+    color: white;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(23, 59, 96);
+    box-shadow: 5px 5px 10px rgba(0 0 0 0.15);
+  }
+
+  .button:hover{
+    background-color: rgb(66, 133, 244);
+    color: white;
+  }
+
+  .flexbox{
+    display: grid;
+    grid-template-columns: 60px 60px 50px ;
+    width: 170px;
+    background-color: rgb(240, 240, 240);
+    border-style: solid;
+    border-color: gray;
+    border-width: 1px;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.15);
+  }
+
+  .buttonAC{
+    height: 50px;
+    width: 50px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 16px;
+    box-shadow: none;
+    border: none;
+    border-radius: 4px;
+    background-color: rgb(66, 133, 244);
+    color: white;
+    cursor: pointer;
+  }
+
+  .buttonAC:active{
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(23, 59, 96);
+    animation: gradient 100ms;
+    color: white;
+    box-shadow: 5px 5px 10px rgba(0 0 0 0.15);
+  }
+
+  .buttoncalculation{
+    background-color: lightgray;
+    height: 50px;
+    width: 50px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    font-weight: 500;
+    font-size: 20px;
+    box-shadow: none;
+    border-color: rgb(165, 161, 161);
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .buttoncalculation:hover{
+    background-color: rgb(66, 133, 244);
+    color: white;
+  }
+
+  .buttoncalculation:active{
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(23, 59, 96);
+    animation: gradient 100ms;
+    color: white;
+    box-shadow: 5px 5px 10px rgba(0 0 0 0.15);
+  }
+</style>
+<body>
+    <div><p style="margin: 0; margin-bottom: 8px;
+    margin-left: 8px;">Basic Calculator</p></div>
+
+    <div class="flexbox">
+
+    <button class="button" onclick="calculation += '1';
+    console.log(calculation);">1</button>
+
+    <button class="button" onclick="calculation +='2';
+    console.log(calculation);">2</button>
+
+    <button class="button" onclick="calculation +='3';
+    console.log(calculation);">3</button>
+
+    <button class="button" onclick="calculation +='4';
+    console.log(calculation);">4</button>
+
+    <button class="button" onclick="calculation +='5';
+    console.log(calculation);">5</button>
+
+    <button class="button" onclick="calculation +='6';
+    console.log(calculation);">6</button>
+
+    <button class="button" onclick="calculation +='7';
+    console.log(calculation);">7</button>
+
+    <button class="button" onclick="calculation +='8';
+    console.log(calculation);">8</button>
+
+    <button class="button" onclick="calculation +='9';
+    console.log(calculation);">9</button>
+
+    <button class="button" onclick="calculation +='0';
+    console.log(calculation);">0</button>
+
+    <button class="buttoncalculation" onclick="calculation += ' + ' ;
+    console.log(calculation);">+</button>
+
+    <button class="buttoncalculation" onclick="calculation += ' - ' ;
+    console.log(calculation);">&#8722;</button>
+
+    <button class="buttoncalculation" onclick="calculation += ' * ' ;
+    console.log(calculation);">&#xd7;</button>
+
+    <button class="buttoncalculation" onclick="calculation += ' / ' ;
+    console.log(calculation);">&#247;</button>
+
+    <button class="buttoncalculation" onclick="calculation = eval(calculation);
+    console.log(calculation);
+    ">=</button>
+
+    <button class="buttonAC" onclick="calculation = 0;
+    console.log(calculation);">AC</button>
+
+</div>
+<script>
+  let calculation = '';
+
+  localStorage.setItem('calculation', JSON.stringify(calculation));
+
+</script>
+</body>
+</html>

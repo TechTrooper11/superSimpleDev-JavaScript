@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Lesson 07</title>
+</head>
+<style>
+  .greet-button{
+    color: white;
+    border: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    width: 70px;
+    height: 30px;
+    background-color: rgb(233, 26, 26);
+    box-shadow: 5px 5px 10px rgba(0 0 0);
+    border-radius: 15px;
+  }
+
+.greet-button:active{
+  animation: gradient 100ms;
+    background-color: rgb(66, 133, 244);
+    color: black;
+}
+</style>
+<body>
+  
+  <button class="greet-button" onclick="greet()">Greet</button>
+
+  <script>
+
+    function greet(){
+      return alert("Good morning!");
+    }
+
+    function greetAgain(name){
+
+      if(!name){
+        console.log("Hi there!");
+      }else{
+        console.log(`Hello ${name}`);
+      }
+
+    }
+    greetAgain();
+
+    
+
+
+
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercises</title>
+
+  <style>
+    body{
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 17px;
+    }
+
+    .add-cart-button{
+      background-color: rgb(255, 216, 20);
+      width: 180px;
+      height: 30px;
+      border: none;
+      border-radius: 20px;
+      font-size: 16px;
+    }
+
+    .request-button{
+      background-color: black;
+      color: white;
+      height: 36px;
+      border: none;
+      border-radius: 3px;
+      padding-right: 15px;
+      padding-left: 15px;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .is-requested{
+      background-color: rgb(230, 230, 230);
+      color: black;
+    }
+
+    .schedule-button{
+      background-color: black;
+      color: white;
+      height: 36px;
+      border: none;
+      border-radius: 3px;
+      padding-right: 15px;
+      padding-left: 15px;
+      font-size: 16px;
+      font-weight: 500;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+
+    .is-scheduled{
+      background-color: rgb(230, 230, 230);
+      color: black;
+    }
+
+    .gaming-button{
+      background-color: black;
+      color: white;
+      height: 36px;
+      border: none;
+      border-radius: 3px;
+      padding-right: 15px;
+      padding-left: 15px;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+
+    .is-toggled{
+      background-color: rgb(230, 230, 230);
+      color: black;
+    }
+
+    .music-button{
+      background-color: black;
+      color: white;
+      height: 36px;
+      border: none;
+      border-radius: 3px;
+      padding-right: 15px;
+      padding-left: 15px;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+
+    .tech-button{
+      background-color: black;
+      color: white;
+      height: 36px;
+      border: none;
+      border-radius: 3px;
+      padding-right: 15px;
+      padding-left: 15px;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+
+    .is-music-on{
+      background-color: rgb(230, 230, 230);
+      color: black;
+    }
+
+    .is-tech-on{
+      background-color: rgb(230, 230, 230);
+      color: black;
+    }
+
+    .is-requested{
+      background-color: rgb(230, 230, 230);
+      color: black;
+    }
+
+
+  </style>
+</head>
+<body>
+  <p>10a. Amazon button</p>
+  <button class="add-cart-button">Add to Cart</button>
+
+  <p>10b. Uber buttons</p>
+  <button class="js-request-button request-button" onclick="requestButton();">Request now</button>
+  <button class="js-schedule-button schedule-button" onclick="schedule();">Schedule for later</button>
+
+  <p>10d. classList.contains() use</p>
+  <button class="js-button button">Test</button>
+
+  <p>10e. Turn ON/OFF</p>
+  <button class="js-gaming-button gaming-button" onclick="gamingFunc();">Gaming</button>
+
+  <button class="js-music-button music-button" onclick="musicButton();">Music</button>
+  <button class="js-tech-button tech-button" onclick="techButton();">Tech</button>
+
+  <script>
+    const buttonElement = document.querySelector('.js-button');
+    console.log(buttonElement.classList.contains('button'));
+
+    function requestButton(){
+      const buttonElement5 = document.querySelector('.js-request-button');
+
+      if(buttonElement5.innerText === 'Request now'){
+        buttonElement5.innerHTML = 'Requested';
+        buttonElement5.classList.add('is-requested');
+      }else if(buttonElement5.classList.contains('is-requested') === true){
+        buttonElement5.innerHTML = 'Request now'
+        buttonElement5.classList.remove('is-requested');
+      }
+    }
+
+    function schedule(){
+      const buttonElement6 = document.querySelector('.js-schedule-button');
+
+      if(buttonElement6.innerText === 'Schedule for later'){
+        buttonElement6.innerHTML = 'Scheduled for later';
+        buttonElement6.classList.add('is-scheduled');
+      }else if(buttonElement6.classList.contains('is-scheduled')){
+        buttonElement6.innerHTML = 'Schedule for later';
+        buttonElement6.classList.remove('is-scheduled');
+      }
+    }
+
+    function gamingFunc(){
+      const buttonElement2 = document.querySelector('.js-gaming-button');
+      
+      if(buttonElement2.classList.contains('is-toggled') === !true){
+        buttonElement2.classList.add('is-toggled');
+      }else if(buttonElement2.classList.contains('is-toggled') === true){
+        buttonElement2.classList.remove('is-toggled');
+      }
+    }
+
+
+    function musicButton(){
+      const buttonElement3 = document.querySelector('.js-music-button');
+      if(buttonElement3.classList.contains('is-music-on') === !true){
+        buttonElement3.classList.add('is-music-on');
+      }else if(buttonElement3.classList.contains('is-music-on') === true){
+        buttonElement3.classList.remove('is-music-on');
+      }
+    }
+
+
+    function techButton(){
+      const buttonElement4 = document.querySelector('.js-tech-button');
+
+      if(buttonElement4.classList.contains('is-tech-on') === !true){
+        buttonElement4.classList.add('is-tech-on');
+      }else if(buttonElement4.classList.contains('is-tech-on') === true){
+        buttonElement4.classList.remove('is-tech-on');
+      }
+    }
+
+    const toggleButton = document.querySelector('js-gaming-button');
+    const toggleButton2 = document.querySelector('js-gaming-button');
+    const toggleButton3 = document.querySelector('js-gaming-button');
+    if(toggleButton === 'js-gaming-button'){
+      gamingFunc();
+    }else if(toggleButton2 === 'js-music-button'){
+      musicButtton();
+    }else if(toggleButton3 === 'js-tech-button'){
+      techButton();
+    }
+  </script>
+</body>
+</html>

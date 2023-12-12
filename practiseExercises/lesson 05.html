@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Variables</title>
+</head>
+
+<style>
+  body{
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .add4{
+    font-size: 16px;
+    color: black;
+    border-width: 1px;
+    border-style: solid;
+    border-color: gray;
+    margin-right: 4px;
+    height: 30px;
+    width: 50px;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 10px;
+  }
+
+  .add4:active{
+    animation: gradient 100ms;
+    background: black;
+    color: white;
+    box-shadow: none;
+  }
+
+  .remove{
+    border: none;
+    background-color: rgb(222, 222, 42);
+    height: 35px;
+    font-size: 14px;
+    width: 200px;
+    cursor: pointer;
+    color: 500;
+    border-radius: 4px;
+    border-radius: 30px;
+  }
+
+  .remove:active{
+    animation: gradient 100ms;
+    background-color: black;
+    color: white;
+  }
+
+  .reset{
+    border: none;
+    background-color: coral;
+    height: 35px;
+    width: 130px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-right: 4px;
+    border-radius: 30px;
+  }
+
+  .reset:active{
+    animation: gradient 100ms;
+    background-color: black;
+    color: white;
+  }
+</style>
+<body>
+  <script>
+    var name = 'Shivam Upadhyay';
+    console.log(name);
+    console.log(`My name is: ${name}`);
+
+    var cost = 5 + 3*2 +9 ;
+    console.log(cost);
+    console.log(`Cost of food: $${cost}`);
+
+    var tax = 20 * 0.1;
+    console.log(tax);
+    console.log(`Tax(10%): $${tax}`);
+
+    var totalCost = cost + tax;
+    console.log(totalCost);
+    console.log(`TotalCost: $${totalCost}`);
+
+    let cartQuantity = 0;
+
+  </script>
+
+  <button class="add4" onclick="cartQuantity += 4;
+  console.log(`Cart Quantity: ${cartQuantity}`);">+4</button>
+
+  <button class="add4" onclick="cartQuantity += 5;
+  console.log(`cartQuantity: ${cartQuantity}`);">+5</button>
+
+  <button class="remove" onclick="cartQuantity--;
+  console.log(`Cart Quantity: ${cartQuantity}`);
+  ">Remove from cart</button>
+
+  <button class="reset" onclick="cartQuantity = 0;
+  console.log(`Cart Quantity: ${cartQuantity}`)">Reset cart</button>
+
+  <button class="add4" onclick="cartQuantity -= 2;
+  console.log(`Cart Quantity: ${cartQuantity}`)">-2</button>
+
+  <button class="add4" onclick="cartQuantity -= 3;
+  console.log(`Cart Quantity: ${cartQuantity}`)">-3</button>
+
+</body>
+</html>

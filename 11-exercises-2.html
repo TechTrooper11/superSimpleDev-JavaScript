@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 11 Exercises - Arrays and Loops</title>
+</head>
+<body>
+  <script>
+  // Question 1 and Question 2 and Question 3
+  //+++++++++++++++++++++++++++++++++++++++++++++++++++++
+  function indexOfStrings(array,findIndex){
+    for(let i = 0; i < array.length; i++){
+      if(array[i] === findIndex){
+        console.log(`Found at index: ${i}`);
+        break;
+      }else{
+        console.log('Not found!');
+      }
+    }
+  }
+
+  console.log(indexOfStrings(['hello', 'world', 'search', 'good', 'search'], 'search'));
+
+  //+++++++++++++++++++++++++++++++++++++++++++++++++++++
+  // Question 4 and Question 5
+    function removeEgg(foods,word){
+      const result = [];
+      let eggsRemoved = '';
+
+      for(let i = 0; i < foods.length; i++){
+
+        if(foods[i] === word && eggsRemoved < 2){
+
+          eggsRemoved++;
+          continue;
+        }
+
+        result.push(foods[i]);
+      }
+
+      return result;
+    }
+    console.log(removeEgg(['egg', 'apple', 'egg', 'egg', 'ham'], 'egg'));
+
+    //+++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // Question 6
+    function removeEgg(foods,word){
+      const result = [];
+      let eggsRemoved = '';
+
+      for(let i = 0; i < foods.length; i++){
+
+        foods.reverse();
+
+        if(foods[i] === word && eggsRemoved < 2){
+
+          eggsRemoved++;
+          continue;
+        }
+
+        result.push(foods[i]);
+      }
+
+      return result.reverse();
+    }
+    console.log(removeEgg(['egg', 'apple', 'egg', 'egg', 'ham'], 'egg'));
+    
+    //+++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // Question 7
+    const foods = ['eggs', 'apple', 'egg', 'egg', 'ham'];
+    function removeEgg(foods){
+      foods.slice();
+
+      const result = [];
+      let removedEggs = '';
+
+      for(let i = 0; i < foods.length; i++){
+        foods.reverse();
+        if(foods[i] === 'egg' && removedEggs < 2){
+
+          removedEggs++;
+          continue;
+        }
+
+        result.push(foods[i]);
+      }
+      return result.reverse();
+    }
+
+    console.log(foods);
+    console.log(removeEgg(foods));
+
+    //+++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // Challenge Exercises
+    // Question 1
+    for(let i = 1; i <= 20; i++){
+      if(i % 3 === 0 && i % 5 === 0){
+        console.log('FizzBuzz');
+      }else if(i % 3 === 0){
+        console.log('Fizz');
+      }else if(i % 5 === 0){
+        console.log('Buzz');
+      }else{
+        console.log(i);
+      }
+    }
+
+    //+++++++++++++++++++++++++++++++++++++++++++++++++++++
+    //Question 2
+    function indexOfStrings(array,findIndex){
+      for(let i = 0; i < array.length; i++){
+        if(array[i] === findIndex){
+          console.log(`Found at index: ${i}`);
+          break;
+        }else{
+          console.log('Not found!');
+        }
+      }
+    }
+
+    console.log(indexOfStrings(['hello', 'world', 'search', 'good', 'search'], 'search'));
+
+
+    function unique(array){
+      for(let i = 0; i < array.length; i++){
+        if(array[i])
+      }
+    }
+
+  </script>
+</body>
+</html>

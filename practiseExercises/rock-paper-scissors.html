@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Rock Paper Game</title>
+</head>
+
+<style>
+
+body{
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+button{
+  background-color: rgb(251, 245, 239);
+  border: none;
+  color: black;
+  font-weight: 500;
+  height: 40px;
+  margin-right: 8px;
+  width: 80px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: gray;
+  font-size: 14px;
+  background-image:url('/img/rock.jpg') 10px 10px no-repeat
+
+}
+
+button:hover{
+  animation: gradient 100ms;
+  background-color: rgb(66, 133, 244);
+  color: white;
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(23, 59, 96);
+  box-shadow: 5px 5px 10px rgba(0 0 0 0.15);
+}
+
+</style>
+<body>
+    <p>Rock Paper Scissors Practise</p>
+
+    <button class="rock" onclick="
+    pickComputerMove();
+    showResult();
+
+    ">
+      Rock
+    </button>
+
+    <button class="paper" onclick="
+    pickComputerMove();
+    showResult();
+
+    "
+    >
+      Paper
+    </button>
+
+    <button class="scissors" onclick="
+    pickComputerMove();
+    showResult();
+
+
+    
+    ">
+      Scissors
+    </button>
+
+
+
+    <script>
+      let computerMove = '';
+      function pickComputerMove() {
+        const randomMove = Math.random();
+        
+
+        if(randomMove >= 0 && randomMove < 1/3) 
+        {
+          computerMove =  'Rock'; 
+        } 
+        else if (randomMove >= 1/3 && randomMove < 2/3)
+        {
+          computerMove = 'Paper';
+        }
+        else{
+          computerMove = 'Scissors';
+        }
+          }
+
+
+        function showResult (){
+
+        result = '';
+
+        if(computerMove == 'Paper'){
+          result = 'Tie.';
+        }
+        else if(computerMove == 'Scissors'){
+          result = 'You Lose.';
+        }
+        else{
+          result = 'You Win.';
+        }
+
+        alert(`You picked paper. Computer picked ${computerMove}. ${result}`);
+
+      }
+      
+
+    </script>
+
+</body>
+</html>

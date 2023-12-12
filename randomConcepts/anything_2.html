@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Stopwatch</title>
+  </head>
+  <body>
+    <h1>Stopwatch</h1>
+    <div id="stopwatch">00:00:00</div>
+    <button id="startStopButton">Start</button>
+    <button id="resetButton">Reset</button>
+
+    <script>
+      let isRunning = false;
+      let time = 0;
+      let intervalId;
+
+      function startStop() {
+        if (isRunning) {
+          clearInterval(intervalId);
+          document.getElementById("startStopButton").textContent = "Start";
+        } else {
+          intervalId = setInterval(updateStopwatch, 1000);
+          document.getElementById("startStopButton").textContent = "Stop";
+        }
+        isRunning = !isRunning;
+      }
+
+      function reset() {
+        clearInterval(intervalId);
+        time = 0;
+        updateStopwatch();
+        document.getElementById("startStopButton").textContent = "Start";
+        isRunning = false;
+      }
+
+      function updateStopwatch() {
+        time++;
+        const hours = String(Math.floor(time / 3600)).padStart(2, "0");
+        const minutes = String(Math.floor((time % 3600) / 60)).padStart(2, "0");
+        const seconds = String(time % 60).padStart(2, "0");
+        document.getElementById("stopwatch").textContent = `${hours}:${minutes}:${seconds}`;
+      }
+
+      document.getElementById("startStopButton").addEventListener("click", startStop);
+      document.getElementById("resetButton").addEventListener("click", reset);
+    </script>
+  </body>
+</html>

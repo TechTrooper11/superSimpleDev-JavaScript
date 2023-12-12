@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>DOM Projects</title>
+</head>
+<style>
+  body{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    margin-bottom: 400px;
+  }
+  button {
+    font-size: 16px;
+  }
+
+  input{
+    height: 18px;
+    width: 200px;
+    font-size: 16px;
+  }
+</style>
+<body>
+  <P>YouTube Subscribe Button</P>
+  <button onclick="subscribe();
+  " class="js-subscribe-button">Subscribe</button>
+
+  <br>
+  <br>
+  <br>
+
+  <p>Rock Paper Scissors</p>
+  <a href="">Click here</a>
+
+  <br>
+  <br>
+  <br>
+  
+  <P>Amazon Shipping Calculator</P>
+  <p>Order under $40 = +$10 shipping.</p>
+  <p>Order over $40 = FREE shipping.</p>
+
+  <input type="display" placeholder="Cost of order" class="js-cost-input" onkeydown="
+  handleCostKeyDown(event);
+  ">
+
+  <button onclick="
+  calculateTotal();
+  ">Calculate</button>
+  <p class="js-total-cost"></p>
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <a href="09-rock-paper-scissors.html" target="_blank">CSS version of these projects</a>
+  <script>
+    //if a string contain only a number, and we -*/ => ti will converted into a number.
+    //Type Coersion => automatic type conversion. Don't do maths using string.
+    string(25);
+    console.log('25' - 5); //this will work.
+    console.log('25' + 5); //but this will not work. that's wy don't do maths using string.
+
+
+    //Document Object represent the WebPage.
+    //Window Object represent the Browser. which means everything inside the browser is inside the window Object.
+    window.document // Javascript has shortcut for this you can write document only javascript will automatically write window for us.
+    
+
+    // Object provided by javascript and it contain the information about the event. Every eventListeners also get the event object. (event.key) will tell us which key is pressed by us on keyboard.
+
+    function handleCostKeyDown(event){ // this will take the event object and put it inside the function.
+
+      if(event.key === 'Enter'){
+      calculateTotal();
+      }
+    }
+
+    function calculateTotal(){
+      const inputElement = document.querySelector('.js-cost-input');
+      let cost =Number(inputElement.value);  // This will give us the text inside the text box. The value would be a string if we don't apply Number() --> a function.
+
+      //Whenever we get a value from a DOM the value will be a string. We have to manually convert the value according to our need.
+
+      //onkeydown Attribute will help us to run javascript when we press any key on keyboard.
+
+      //clicks, keydowns => events
+      //onclick, onkeydown => event listeners means they check the event and runs javascript when those events happens.
+
+      // Event listeners
+      //onclick = click
+      //onkeydown = key press
+      //onscroll = scrolling
+      //onmouseenter = hovering over
+      //onmouseleave = stop hovering over
+
+
+      if(cost < 40){
+        cost += 10;
+        cost = cost.toFixed(2);
+        cost = Number(cost);
+      }
+
+      document.querySelector('.js-total-cost')
+        .innerHTML = `$${cost}`;
+    }
+    
+
+    function subscribe(){
+      const buttonElement = document.querySelector('.js-subscribe-button');
+
+      if(buttonElement.innerText === 'Subscribe'){
+        buttonElement.innerHTML = 'Subscribed';
+      } else {
+        buttonElement.innerHTML = 'Subscribe';
+      }
+    }
+  </script>
+</body>
+</html>

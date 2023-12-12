@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<style>
+  .name{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: gray;
+    font-size: 50px;
+    font-weight: 600;
+  }
+  .logo{
+    display: grid;
+    width: 104px;
+    height: 104px;
+    margin-left: 55px;
+    margin-top: 20px;
+    grid-template-columns: 50px 50px;
+    grid-template-rows: 50px 50px;
+    row-gap: 4px;
+    column-gap: 4px;
+    box-sizing: border-box;
+
+    
+  }
+
+  .d1{
+    background-color: #f65314;
+    box-shadow: 5px 5px 10px rgba(0 0 0);
+  }
+
+  .d2{
+    background-color: #7cbb00;
+    box-shadow: 5px 5px 10px rgba(0 0 0);
+  }
+
+  .d3{
+    background-color: #00a1f1;
+    box-shadow: 5px 5px 10px rgba(0 0 0);
+  }
+
+  .d4{
+    background-color: #ffbb00;
+    box-shadow: 5px 5px 10px rgba(0 0 0);
+  }
+
+  .name{
+    padding-top: 0px;
+  }
+</style>
+<body>
+
+  <div class="logo">
+    <div class="d1"></div>
+    <div class="d2"></div>
+    <div class="d3"></div>
+    <div class="d4"></div>
+  </div>
+  <div class="name">Microsoft</div>
+  
+
+  <script>
+    //program_1
+    const myStr = "FirstLine\n\t\\SecondLine\nThirdLine";
+    console.log(myStr);
+    
+    //program_2
+    for(let current = 20; ;current += 1){
+      if(current % 7 == 0){
+        console.log(current);
+        break;
+      }
+    }
+
+    //program_3
+    let result = 1;
+    for(let counter = 0; counter < 10; counter++){
+      result = result * 2;
+      console.log(result);
+    }
+
+    //program_4
+    for(let number = 0; number <= 12; number += 2){
+      console.log(number);
+    }
+
+    //program_5
+    let number = Number(prompt("Enter the number."));
+    if(number < 0){
+      console.log("Negative Integer.");
+    }else if(number % 2 == 0){
+      console.log("Even Number.");
+    }else{
+      console.log("Odd Number.");
+    }
+
+    //program_6
+    switch(prompt("What is the weather like?")) {
+      case "rainy":
+        console.log("Remember to bring an umbrella.");
+        break;
+      case "sunny":
+        console.log("Dress lightly.");
+      case "cloudy":
+        console.log("Go outside.");
+        break;
+      default:
+        console.log("Unknown weather type!");
+        break;  
+    }
+
+    const name = "Moana";
+    const movieNameCharacter = name[name.length - 2];
+    console.log(movieNameCharacter);
+
+    const myNoun = "dog";
+    const myAdjective = "big";
+    const myVerb = "ran";
+    const myAdverb = "quickly";
+
+    // Only change code below this line
+    const wordBlanks = myAdjective + " " + myNoun + " " + myVerb + " " + myAdverb;
+    console.log(wordBlanks);
+
+    ARRAY
+    const myArray = [["peanut butter", 140], ["bread", 40]];
+    console.log(myArray);
+
+    //PUSH IN ARRAY
+    const arr1 = [1, 2, 3, 4];
+    arr1.push(4, 5);
+    console.log(arr1);
+
+    //POP IN ARRAY
+    const threeArr = [1, 4, 6];
+    const oneDown = threeArr.pop();
+    console.log(oneDown);
+    console.log(threeArr);
+
+    let myGlobal = 10;
+    function fun1() {
+      oopsGlobal = myGlobal / 2;      
+    }
+
+    function fun2() {
+      let output = "";
+      if (typeof myGlobal != "undefined") {
+        output += "myGlobal: " + myGlobal;
+      }
+      fun1();
+      if (typeof oopsGlobal != "undefined") {
+        output += " oopsGlobal: " + oopsGlobal;
+      }
+      console.log(output);
+    }
+    fun2();
+
+    
+  </script>
+</body>
+</html>
+

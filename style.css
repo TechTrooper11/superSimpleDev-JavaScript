@@ -1,0 +1,75 @@
+body{
+  margin: 0px;
+}
+
+.video-thumbnail{
+  width: 100%;
+  margin-bottom: 0px;
+}
+
+.youtube-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 16px;
+  row-gap: 40px;
+}
+
+.video-preview{
+  display: flex;
+  flex: 50px 1fr;
+}
+
+.content-info {
+  width: 246px;
+  font-family: Roboto;
+  font-weight: 500;
+  margin: 0px;
+  margin-top: 12px;
+  font-size: 17px;
+  letter-spacing: 0.1px;
+  line-height: 22px;
+}
+
+.channel-name{
+  margin-top: 8px;
+  font-family: Roboto;
+  font-size: 14px;
+  color: rgb(96, 96, 96);
+}
+
+.channel-stats{
+  margin-top: 6px;
+  margin-bottom: 16px;
+  font-family: Roboto;
+  font-size: 14px;
+  color: rgb(96, 96, 96);
+}
+
+.channel-profile-image{
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  margin-top: 12px;
+  margin-right: 12px;
+}
+
+@media (max-width: 750px) {
+
+  .youtube-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 751px) and (max-width: 999px) {
+
+  .youtube-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media (min-width: 1000px) {
+
+  .youtube-grid {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}

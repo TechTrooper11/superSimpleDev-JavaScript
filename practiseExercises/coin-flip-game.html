@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Coin Flip Game</title>
+</head>
+
+<style>
+  body{
+    font-family: Arial, Helvetica, sans-serif;
+  }
+</style>
+
+
+<body>
+  <p>Choose your move!</p>
+  
+  <button onclick="     
+  const randomMove = Math.random();
+
+  let computerMove = '';
+
+  if(randomMove <= 1/2){
+    computerMove = 'Head';      
+  }
+  else{
+    computerMove = 'Tail';            
+  }
+  
+  let result = '';
+
+  if(computerMove === 'Head'){
+    result = 'You Win.';
+  }else{
+    result = 'You Lose.';
+  }
+
+
+  console.log(`You choose Head. Computer Choose ${computerMove} and Result = ${result}`);
+
+  "
+  >
+  Head
+  </button>
+
+  <button onclick="
+  
+  randomMove = Math.random();
+  computerMove = '';
+
+  if(randomMove >= 1/2){
+    computerMove = 'Head';
+  }
+  else{
+    computerMove = 'Tail';
+  }
+
+  result = '';
+
+  if(computerMove === 'Head'){
+    result = 'You Lose.';
+  }
+  else{
+    result = 'You Win';
+  }
+    
+
+  console.log(`You choose Tail. computer choose ${computerMove} and Result = ${result}`);
+
+  "
+  >
+    Tail
+  </button>
+
+  <script>
+
+  
+
+  </script>
+
+
+</body>
+</html>

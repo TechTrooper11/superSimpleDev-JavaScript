@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Notes-Javascript.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/*
+Docco style used in http://jashkenas.github.com/docco/ converted by Simon Madine (@thingsinjars)
+*/
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  color: #000;
+  background: #f8f8ff;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: #408080;
+  font-style: italic;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-literal,
+.hljs-subst {
+  color: #954121;
+}
+
+.hljs-number {
+  color: #40a070;
+}
+
+.hljs-string,
+.hljs-doctag {
+  color: #219161;
+}
+
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-section,
+.hljs-type {
+  color: #19469d;
+}
+
+.hljs-params {
+  color: #00f;
+}
+
+.hljs-title {
+  color: #458;
+  font-weight: bold;
+}
+
+.hljs-tag,
+.hljs-name,
+.hljs-attribute {
+  color: #000080;
+  font-weight: normal;
+}
+
+.hljs-variable,
+.hljs-template-variable {
+  color: #008080;
+}
+
+.hljs-regexp,
+.hljs-link {
+  color: #b68;
+}
+
+.hljs-symbol,
+.hljs-bullet {
+  color: #990073;
+}
+
+.hljs-built_in,
+.hljs-builtin-name {
+  color: #0086b3;
+}
+
+.hljs-meta {
+  color: #999;
+  font-weight: bold;
+}
+
+.hljs-deletion {
+  background: #fdd;
+}
+
+.hljs-addition {
+  background: #dfd;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+<link rel="stylesheet" href="file:///d%3A/superSimpleDev-JavaScript/.vscode/markdown.css" type="text/css">
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="javascript-notes">JavaScript Notes</h1>
+<blockquote>
+<h1 id="javascript-basics">JavaScript Basics</h1>
+</blockquote>
+<pre class="hljs"><code><div>alert(<span class="hljs-string">'hello'</span>);
+alert(<span class="hljs-string">'Good job!'</span>);
+
+<span class="hljs-number">2</span> + <span class="hljs-number">2</span>
+<span class="hljs-number">10</span> - <span class="hljs-number">3</span>
+
+<span class="hljs-built_in">document</span>.body.innerHTML = <span class="hljs-string">'hello'</span>;
+</div></code></pre>
+<blockquote>
+<h1 id="numbers-and-maths">Numbers and Maths</h1>
+</blockquote>
+<pre class="hljs"><code><div><span class="hljs-comment">// Basics of Math:</span>
+<span class="hljs-number">2</span> + <span class="hljs-number">2</span>
+<span class="hljs-number">10</span> - <span class="hljs-number">3</span>
+<span class="hljs-number">10</span> * <span class="hljs-number">3</span>
+<span class="hljs-number">10</span> / <span class="hljs-number">2</span>
+
+<span class="hljs-number">2</span> + <span class="hljs-number">2</span> + <span class="hljs-number">2</span>
+<span class="hljs-number">2.2</span> + <span class="hljs-number">2.2</span>
+
+<span class="hljs-number">10.90</span> * <span class="hljs-number">2</span> + <span class="hljs-number">20.95</span>
+<span class="hljs-number">10.90</span> * <span class="hljs-number">2</span> + <span class="hljs-number">20.95</span> + <span class="hljs-number">4.99</span>
+
+<span class="hljs-comment">// Order of operations:</span>
+<span class="hljs-number">1</span> + <span class="hljs-number">1</span> * <span class="hljs-number">3</span>
+(<span class="hljs-number">1</span> + <span class="hljs-number">1</span>) * <span class="hljs-number">3</span>
+
+<span class="hljs-number">20.95</span> + <span class="hljs-number">7.99</span> * <span class="hljs-number">2</span>
+<span class="hljs-number">36.93</span> * <span class="hljs-number">0.1</span>
+(<span class="hljs-number">20.95</span> + <span class="hljs-number">7.99</span> * <span class="hljs-number">2</span>) * <span class="hljs-number">0.1</span>
+
+<span class="hljs-comment">// Inaccuracies with Floats:</span>
+<span class="hljs-number">0.1</span> + <span class="hljs-number">0.2</span>
+<span class="hljs-number">20.95</span> + <span class="hljs-number">7.99</span>
+(<span class="hljs-number">2095</span> + <span class="hljs-number">799</span>) / <span class="hljs-number">100</span>
+
+<span class="hljs-comment">// How to round numbers:</span>
+<span class="hljs-built_in">Math</span>.round(<span class="hljs-number">2.2</span>)
+<span class="hljs-built_in">Math</span>.round(<span class="hljs-number">2.8</span>)
+
+((<span class="hljs-number">2095</span> + <span class="hljs-number">799</span>) * <span class="hljs-number">0.1</span>) / <span class="hljs-number">100</span>
+<span class="hljs-built_in">Math</span>.round((<span class="hljs-number">2095</span> + <span class="hljs-number">799</span>) * <span class="hljs-number">0.1</span>) / <span class="hljs-number">100</span>
+</div></code></pre>
+<blockquote>
+<h1 id="strings">Strings</h1>
+</blockquote>
+<pre class="hljs"><code><div><span class="hljs-string">'hello'</span>
+alert(<span class="hljs-string">'hello'</span>);
+
+<span class="hljs-string">'some'</span> + <span class="hljs-string">'text'</span>
+<span class="hljs-string">'some'</span> + <span class="hljs-string">'more'</span> + <span class="hljs-string">'text'</span>
+
+<span class="hljs-keyword">typeof</span> <span class="hljs-number">2</span>
+<span class="hljs-keyword">typeof</span> <span class="hljs-string">'hello'</span>
+
+<span class="hljs-string">'hello'</span> + <span class="hljs-number">3</span>
+<span class="hljs-string">'$'</span> + <span class="hljs-number">20.95</span> + <span class="hljs-number">7.99</span>
+<span class="hljs-string">'$'</span> + (<span class="hljs-number">20.95</span> + <span class="hljs-number">7.99</span>)
+<span class="hljs-string">'$'</span> + (<span class="hljs-number">2095</span> + <span class="hljs-number">799</span>) / <span class="hljs-number">100</span>
+
+<span class="hljs-string">'Items ('</span> + (<span class="hljs-number">1</span> + <span class="hljs-number">1</span>) + <span class="hljs-string">'): $'</span> + (<span class="hljs-number">2095</span> + <span class="hljs-number">799</span>) / <span class="hljs-number">100</span>
+alert(<span class="hljs-string">'Items ('</span> + (<span class="hljs-number">1</span> + <span class="hljs-number">1</span>) + <span class="hljs-string">'): $'</span> + (<span class="hljs-number">2095</span> + <span class="hljs-number">799</span>) / <span class="hljs-number">100</span>);
+
+<span class="hljs-string">"hello"</span>
+<span class="hljs-string">"I'm learning JavaScript"</span>
+
+<span class="hljs-string">'I\'m learning JavaScript'</span>
+alert(<span class="hljs-string">'some\ntext'</span>);
+
+<span class="hljs-string">`hello`</span>
+<span class="hljs-string">`Items (<span class="hljs-subst">${<span class="hljs-number">1</span> + <span class="hljs-number">1</span>}</span>): $<span class="hljs-subst">${(<span class="hljs-number">2095</span> + <span class="hljs-number">799</span>) <span class="hljs-regexp">/ 100}`
+`some
+text`
+
+</span></span></span></div></code></pre>
+<blockquote>
+<h1 id="variables">Variables</h1>
+</blockquote>
+<pre class="hljs"><code><div>      <span class="hljs-keyword">let</span> variable1 = <span class="hljs-number">3</span>;
+      <span class="hljs-built_in">console</span>.log(variable1);
+
+      <span class="hljs-keyword">const</span> calculation = <span class="hljs-number">2</span> + <span class="hljs-number">2</span>;
+      <span class="hljs-built_in">console</span>.log(calculation);
+      <span class="hljs-built_in">console</span>.log(calculation + <span class="hljs-number">2</span>);
+
+      <span class="hljs-keyword">const</span> result = calculation + <span class="hljs-number">2</span>;
+      <span class="hljs-built_in">console</span>.log(result);
+
+      <span class="hljs-keyword">const</span> message = <span class="hljs-string">'hello'</span>;
+      <span class="hljs-built_in">console</span>.log(message); <span class="hljs-built_in">console</span>.log(<span class="hljs-string">';'</span>);
+
+      variable1 = <span class="hljs-number">5</span>;
+      <span class="hljs-built_in">console</span>.log(variable1);
+
+      variable1 = variable1 + <span class="hljs-number">1</span>;
+      <span class="hljs-built_in">console</span>.log(variable1);
+
+      <span class="hljs-keyword">const</span> variable2 = <span class="hljs-number">3</span>;
+      <span class="hljs-keyword">var</span> variable3 = <span class="hljs-number">3</span>;
+</div></code></pre>
+<blockquote>
+<h1 id="booleans">Booleans</h1>
+</blockquote>
+<pre class="hljs"><code><div>      <span class="hljs-literal">true</span>
+      <span class="hljs-literal">false</span>
+
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-number">3</span> &gt; <span class="hljs-number">5</span> - <span class="hljs-number">5</span>);
+
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-number">5</span> === <span class="hljs-string">'5.00'</span>);
+
+      <span class="hljs-keyword">if</span> (<span class="hljs-literal">false</span>) {
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'hello'</span>);
+      } <span class="hljs-keyword">else</span> {
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'else'</span>);
+      }
+
+      <span class="hljs-keyword">const</span> age = <span class="hljs-number">15</span>;
+
+      <span class="hljs-keyword">if</span> (age &gt;= <span class="hljs-number">16</span>) {
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'You can drive'</span>);
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Congrats'</span>);
+      } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (age &gt;= <span class="hljs-number">14</span>) {
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Almost there!'</span>);
+      } <span class="hljs-keyword">else</span> {
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'You can not drive'</span>);
+      }
+      
+
+      
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-literal">true</span> &amp;&amp; <span class="hljs-literal">false</span>);
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-number">0.2</span> &gt;= <span class="hljs-number">0</span> &amp;&amp; <span class="hljs-number">0.2</span> &lt; <span class="hljs-number">1</span> / <span class="hljs-number">3</span>);
+
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-literal">true</span> || <span class="hljs-literal">false</span>);
+      <span class="hljs-built_in">console</span>.log(!<span class="hljs-literal">false</span>);
+      
+
+      
+      <span class="hljs-keyword">if</span> (<span class="hljs-number">0</span>) {
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'truthy'</span>);
+      }
+
+      <span class="hljs-keyword">const</span> cartQuantity = <span class="hljs-number">5</span>;
+
+      <span class="hljs-keyword">if</span> (cartQuantity) {
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'cart has products'</span>);
+      }
+
+      <span class="hljs-built_in">console</span>.log(!<span class="hljs-number">0</span>);
+      
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'text'</span> / <span class="hljs-number">5</span>);
+
+      <span class="hljs-keyword">const</span> variable1 = <span class="hljs-literal">undefined</span>;
+      <span class="hljs-built_in">console</span>.log(variable1);
+      
+
+      <span class="hljs-keyword">const</span> result = <span class="hljs-number">0</span> ? <span class="hljs-string">'truthy'</span> : <span class="hljs-string">'falsy'</span>;
+      <span class="hljs-built_in">console</span>.log(result);
+
+      <span class="hljs-literal">false</span> &amp;&amp; <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'hello'</span>);
+
+      <span class="hljs-keyword">const</span> message = <span class="hljs-number">5</span> &amp;&amp; <span class="hljs-string">'hello'</span>;
+      <span class="hljs-built_in">console</span>.log(message);
+
+      <span class="hljs-keyword">const</span> currency = <span class="hljs-literal">undefined</span> || <span class="hljs-string">'USD'</span>;
+      <span class="hljs-built_in">console</span>.log(currency);
+</div></code></pre>
+<h1 id="functions">Functions</h1>
+<blockquote>
+<h2 id="syntax-of-function">Syntax of function</h2>
+</blockquote>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fname</span>(<span class="hljs-params">parameter1, parameter2</span>)</span>{
+<span class="hljs-keyword">return</span> parameter1 * parameter2;
+
+}
+<span class="hljs-built_in">console</span>.log(<span class="hljs-number">8</span>, <span class="hljs-number">10</span>);
+</div></code></pre>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">calculateTax</span>(<span class="hljs-params">cost, taxPercent = <span class="hljs-number">0.1</span></span>) </span>{
+<span class="hljs-built_in">console</span>.log(cost * taxPercent);
+}
+
+calculateTax(<span class="hljs-number">2000</span>, <span class="hljs-number">0.2</span>);
+calculateTax(<span class="hljs-number">5000</span>);
+</div></code></pre>
+<pre class="hljs"><code><div><span class="hljs-comment">//eloquent book</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">findSolution</span>(<span class="hljs-params">target</span>) </span>{
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">find</span>(<span class="hljs-params">current, history</span>) </span>{
+    <span class="hljs-keyword">if</span> (current == target) {
+      <span class="hljs-keyword">return</span> history;
+      } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (current &gt; target) {
+      <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
+      } <span class="hljs-keyword">else</span> {
+      <span class="hljs-keyword">return</span> find(current + <span class="hljs-number">5</span>, <span class="hljs-string">`(<span class="hljs-subst">${history}</span> + 5)`</span>) || find(current * <span class="hljs-number">3</span>, <span class="hljs-string">`(<span class="hljs-subst">${history}</span> * 3)`</span>);
+    }
+  }
+  <span class="hljs-keyword">return</span> find(<span class="hljs-number">1</span>, <span class="hljs-string">"1"</span>);
+}
+<span class="hljs-built_in">console</span>.log(findSolution(<span class="hljs-number">24</span>));
+</div></code></pre>
+<pre class="hljs"><code><div><span class="hljs-keyword">const</span> humus = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">factor</span>) </span>{
+<span class="hljs-keyword">const</span> ingredient = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">amount, unit, name</span>) </span>{
+  <span class="hljs-keyword">let</span> ingredientAmount = amount * factor;
+  <span class="hljs-keyword">if</span> (ingredientAmount &gt; <span class="hljs-number">1</span>) {
+  unit += <span class="hljs-string">'s'</span>;
+  }
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">`<span class="hljs-subst">${ingredientAmount}</span> <span class="hljs-subst">${unit}</span> <span class="hljs-subst">${name}</span>`</span>);
+};
+
+  ingredient(<span class="hljs-number">1</span>, <span class="hljs-string">'can'</span>, <span class="hljs-string">'chickpeas'</span>);
+  ingredient(<span class="hljs-number">0.25</span>, <span class="hljs-string">'cup'</span>, <span class="hljs-string">'tahini'</span>);
+  ingredient(<span class="hljs-number">0.25</span>, <span class="hljs-string">'cup'</span>, <span class="hljs-string">'lemon juice'</span>);
+  ingredient(<span class="hljs-number">1</span>, <span class="hljs-string">'clove'</span>, <span class="hljs-string">'garlic'</span>);
+  ingredient(<span class="hljs-number">2</span>, <span class="hljs-string">'tablespoon'</span>, <span class="hljs-string">'olive oil'</span>);
+  ingredient(<span class="hljs-number">0.5</span>, <span class="hljs-string">'teaspoon'</span>, <span class="hljs-string">'cumin'</span>);
+};
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">`<span class="hljs-subst">${ingredientAmount}</span> <span class="hljs-subst">${unit}</span> <span class="hljs-subst">${name}</span>`</span>);
+</div></code></pre>
+<blockquote>
+<h2 id="function-recieve-a-function-as-first-arg-and-an-array-as-second-arg">Function recieve a function as first arg and an array as second arg</h2>
+</blockquote>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">map</span>(<span class="hljs-params">f, a</span>)</span>{
+  <span class="hljs-keyword">const</span> result = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(a.length);
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; a.length; i++){
+  result[i] = f(a[i]);    
+  }
+  <span class="hljs-keyword">return</span> result;
+}
+<span class="hljs-keyword">const</span> cube = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">x</span>)</span>{
+  <span class="hljs-keyword">return</span> x * x * x;
+}
+<span class="hljs-keyword">const</span> numbers = [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">5</span>, <span class="hljs-number">10</span>];
+<span class="hljs-built_in">console</span>.log(map(cube, numbers));
+</div></code></pre>
+<h1 id="objects">Objects</h1>
+<blockquote>
+<h2 id="an-object-groups-multiple-values-together">An object groups multiple values together.</h2>
+</blockquote>
+<pre class="hljs"><code><div>  <span class="hljs-keyword">const</span> product = {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">'socks'</span>, <span class="hljs-comment">//property value pair</span>
+    <span class="hljs-attr">price</span>: <span class="hljs-number">1090</span>
+  }
+
+  <span class="hljs-built_in">console</span>.log(product);
+  <span class="hljs-built_in">console</span>.log(product.name); <span class="hljs-comment">//Dot Notation</span>
+  <span class="hljs-built_in">console</span>.log(product.price);
+
+  product.name = <span class="hljs-string">'cotton socks'</span>;
+  <span class="hljs-built_in">console</span>.log(product);
+
+  product.newProperty = <span class="hljs-literal">true</span>;
+  <span class="hljs-built_in">console</span>.log(product);
+
+  <span class="hljs-keyword">delete</span> product.newProperty;
+  <span class="hljs-built_in">console</span>.log(product);
+</div></code></pre>
+<pre class="hljs"><code><div>
+  <span class="hljs-keyword">const</span> product2 = {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">'shirt'</span>,
+    <span class="hljs-string">'delivery-time'</span>: <span class="hljs-string">'1 day'</span>, <span class="hljs-comment">//['delivery-time']: '1 day'</span>
+    <span class="hljs-attr">rating</span>: {
+      <span class="hljs-attr">stars</span>: <span class="hljs-number">4.5</span>,
+      <span class="hljs-attr">count</span>: <span class="hljs-number">87</span>
+    },
+    <span class="hljs-attr">fun</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">function1</span>(<span class="hljs-params"></span>)</span>{
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Function inside Object"</span>);
+    }
+
+  };
+
+  <span class="hljs-built_in">console</span>.log(product2.name);
+  <span class="hljs-built_in">console</span>.log(product2[<span class="hljs-string">'name'</span>]);
+  <span class="hljs-built_in">console</span>.log(product2[<span class="hljs-string">'delivery-time'</span>]); <span class="hljs-comment">// another way to fetch property value in object </span>
+
+  <span class="hljs-built_in">console</span>.log(product2.rating.stars);
+  <span class="hljs-built_in">console</span>.log(product2.rating.count);
+
+  product2.fun();
+
+  <span class="hljs-comment">//function inside object is method</span>
+
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> <span class="hljs-built_in">console</span>.log); <span class="hljs-comment">//method //built-in objects</span>
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> <span class="hljs-built_in">Math</span>.random()); <span class="hljs-comment">//method //built-in objects</span>
+    
+</div></code></pre>
+<h2 id="json">JSON</h2>
+<blockquote>
+<h2 id="javascript-object-notation-does-not-support-function-and-single-quotes-and-it-is-universaluse-when-we-store-data">javascript Object Notation does not support function and single quotes and it is universal.use when we store data</h2>
+</blockquote>
+<pre><code>-a syntax
+-similar to javascript objects
+-but has less features
+</code></pre>
+<pre class="hljs"><code><div>  <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">JSON</span>.stringify(product2)); <span class="hljs-comment">//convert the code into JSON format</span>
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> <span class="hljs-built_in">JSON</span>.stringify(product2)); <span class="hljs-comment">//-string</span>
+
+  <span class="hljs-keyword">const</span> jsonString = <span class="hljs-built_in">JSON</span>.stringify(product2);
+
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">JSON</span>.parse(jsonString));
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> <span class="hljs-built_in">JSON</span>.parse(jsonString)); <span class="hljs-comment">//- object</span>
+</div></code></pre>
+<h2 id="localstorage">localStorage</h2>
+<blockquote>
+<p>only supports string<br>
+localStorage saves a value more permanently<br>
+if we refresh/close the page all the variables are deleted</p>
+</blockquote>
+<pre class="hljs"><code><div>  localStorage.setItem(<span class="hljs-string">'message'</span>, <span class="hljs-string">'hello'</span>); <span class="hljs-comment">//saves value in localStorage</span>
+
+  <span class="hljs-built_in">console</span>.log(localStorage.getItem(<span class="hljs-string">'message'</span>)); <span class="hljs-comment">//get value out of localStorage or read data from localStorage</span>
+</div></code></pre>
+<blockquote>
+<p>Save Data to Local Storage</p>
+</blockquote>
+<pre class="hljs"><code><div>localStorage.setItem(key, value);
+</div></code></pre>
+<blockquote>
+<p>Read Data from Local Storage</p>
+</blockquote>
+<pre class="hljs"><code><div><span class="hljs-keyword">let</span> lastname = localStorage.getItem(key);
+</div></code></pre>
+<blockquote>
+<p>Remove Data from Local Storage</p>
+</blockquote>
+<pre class="hljs"><code><div>localStorage.removeItem(key);
+</div></code></pre>
+<blockquote>
+<p>Remove All (Clear Local Storage)</p>
+</blockquote>
+<pre class="hljs"><code><div>localStorage.clear();
+</div></code></pre>
+<pre class="hljs"><code><div>
+    <span class="hljs-comment">// Falsy Values --&gt; false  0  ''  NaN  undefined  null</span>
+    <span class="hljs-comment">// we will use null if we intentionally want something to be null</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">func</span>(<span class="hljs-params">parameter = <span class="hljs-string">'default'</span></span>)</span>{
+      <span class="hljs-built_in">console</span>.log(parameter);
+    }
+
+    func();  <span class="hljs-comment">// 'default'</span>
+    func(<span class="hljs-literal">undefined</span>); <span class="hljs-comment">// 'default'</span>
+
+    func(<span class="hljs-literal">null</span>); <span class="hljs-comment">// null</span>
+    
+
+    <span class="hljs-comment">//AUTO-BOXING</span>
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'hello'</span>.length);
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'hello'</span>.toUpperCase());
+
+    <span class="hljs-comment">// COPY BY REFERENCES</span>
+    <span class="hljs-keyword">const</span> object1 = {
+      <span class="hljs-attr">message</span>: <span class="hljs-string">'hello'</span>
+    };
+
+    <span class="hljs-keyword">const</span> object2 = object1;
+
+    object1.message = <span class="hljs-string">'good job!'</span>;
+    <span class="hljs-built_in">console</span>.log(object1);
+    <span class="hljs-built_in">console</span>.log(object2);
+
+    <span class="hljs-comment">// WE CANNOT COMPARE OBJECTS DIRECTLY </span>
+
+    <span class="hljs-keyword">const</span> object3 = {
+      <span class="hljs-attr">message</span>: <span class="hljs-string">'good job'</span>
+    };
+
+    <span class="hljs-built_in">console</span>.log(object3 === object1); <span class="hljs-comment">//compare references not values</span>
+    <span class="hljs-built_in">console</span>.log(object2 === object1);
+
+    <span class="hljs-comment">//Destructuring--&gt; easier way to take property out of the object</span>
+    <span class="hljs-keyword">const</span> object4 = {
+      <span class="hljs-attr">message</span>: <span class="hljs-string">'Good Morning'</span>,
+      <span class="hljs-attr">price</span>: <span class="hljs-number">799</span>
+    };
+
+    <span class="hljs-comment">// const message = object4.message;</span>
+    <span class="hljs-keyword">const</span> {message,price} = object4;
+    <span class="hljs-built_in">console</span>.log(message);
+    <span class="hljs-built_in">console</span>.log(price);
+    
+    <span class="hljs-comment">// Shorthand property</span>
+    <span class="hljs-keyword">const</span> object5 = {
+      <span class="hljs-comment">// message: message</span>
+      message, 
+      <span class="hljs-attr">method</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">function1</span>(<span class="hljs-params"></span>)</span>{
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'method'</span>);
+      }
+    };
+
+    <span class="hljs-built_in">console</span>.log(object5);
+    object5.method();
+</div></code></pre>
+<h1 id="dom">DOM</h1>
+<blockquote>
+<h2 id="document-object-model">Document Object Model.</h2>
+</blockquote>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>DOM<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>hello<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"js-button"</span>&gt;</span>Second button<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  
+  <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+    <span class="hljs-comment">//Document object --&gt; built in object</span>
+
+    <span class="hljs-comment">//Document Object represents / models the webpage. It is linked to the webpage.DOM combine js and html together</span>
+    <span class="hljs-comment">//DOM --&gt; Document Object Model </span>
+
+    <span class="hljs-built_in">document</span>.body.innerHTML = <span class="hljs-string">'hello'</span>;
+    <span class="hljs-built_in">document</span>.title = <span class="hljs-string">'Good job!'</span>;
+
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">document</span>.title);
+    <span class="hljs-built_in">document</span>.title = <span class="hljs-string">'changed'</span>;
+
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">document</span>.body);
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> <span class="hljs-built_in">document</span>.body);
+
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">document</span>.body.innerHTML);
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> <span class="hljs-built_in">document</span>.body.innerHTML);
+    <span class="hljs-built_in">document</span>.body.innerHTML = <span class="hljs-string">'&lt;button&gt;Good job!&lt;/button&gt;'</span>; 
+
+    <span class="hljs-comment">//Methods --&gt; function inside the Object</span>
+
+    <span class="hljs-comment">//document.querySelector() --&gt; lets us get any element from the page and put it inside javascript</span>
+    <span class="hljs-comment">//every html element has a property called innerHTML</span>
+
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'button'</span>).innerHTML);
+    <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'button'</span>)
+      .innerHTML = <span class="hljs-string">'changed'</span>;
+    
+    <span class="hljs-keyword">const</span> buttonElement = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'.js-button'</span>);
+    <span class="hljs-built_in">console</span>.log(buttonElement);
+
+  </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</div></code></pre>
+<blockquote>
+<h1 id="learn-dom-from-projects">Learn DOM From Projects</h1>
+</blockquote>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>DOM Projects<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+    <span class="hljs-selector-tag">body</span>{
+      <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">5px</span>;
+      <span class="hljs-attribute">font-family</span>: Arial, Helvetica, sans-serif;
+      <span class="hljs-attribute">font-size</span>: <span class="hljs-number">18px</span>;
+      <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">400px</span>;
+    }
+
+    <span class="hljs-selector-class">.subscribe-button</span>{
+      <span class="hljs-attribute">border</span>: none;
+      <span class="hljs-attribute">background-color</span>: black; 
+      <span class="hljs-attribute">color</span>: white;
+      <span class="hljs-attribute">padding</span>: <span class="hljs-number">10px</span> <span class="hljs-number">15px</span>;
+      <span class="hljs-attribute">font-weight</span>: <span class="hljs-number">500</span>;
+      <span class="hljs-attribute">font-size</span>: <span class="hljs-number">16px</span>;
+      <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">50px</span>;
+      <span class="hljs-attribute">cursor</span>: pointer;
+      <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">10px</span>;
+    }
+  
+    <span class="hljs-selector-class">.is-subscribed</span>{
+      <span class="hljs-attribute">background-color</span>: <span class="hljs-built_in">rgb</span>(<span class="hljs-number">240</span>, <span class="hljs-number">240</span>, <span class="hljs-number">240</span>);
+      <span class="hljs-attribute">color</span>: black;
+    }
+
+    <span class="hljs-selector-class">.cost-input</span>{
+      <span class="hljs-attribute">font-size</span>: <span class="hljs-number">15px</span>;
+      <span class="hljs-attribute">padding</span>: <span class="hljs-number">10px</span>;
+    }
+
+    <span class="hljs-selector-class">.calculate-button</span>{
+      <span class="hljs-attribute">background-color</span>: green;
+      <span class="hljs-attribute">color</span>: <span class="hljs-number">#ffff</span>;
+      <span class="hljs-attribute">border</span>: none;
+      <span class="hljs-attribute">font-size</span>: <span class="hljs-number">15px</span>;
+      <span class="hljs-attribute">padding</span>: <span class="hljs-number">12px</span> <span class="hljs-number">15px</span>;
+      <span class="hljs-attribute">cursor</span>: pointer;
+    }
+  </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">P</span>&gt;</span>YouTube Subscribe Button<span class="hljs-tag">&lt;/<span class="hljs-name">P</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">"subscribe();
+  "</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"js-subscribe-button subscribe-button"</span>&gt;</span>Subscribe<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Rock Paper Scissors<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">""</span>&gt;</span>Click here<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+  
+  <span class="hljs-tag">&lt;<span class="hljs-name">P</span>&gt;</span>Amazon Shipping Calculator<span class="hljs-tag">&lt;/<span class="hljs-name">P</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Order under $40 = +$10 shipping.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Order over $40 = FREE shipping.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"display"</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"Cost of order"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"js-cost-input cost-input"</span> <span class="hljs-attr">onkeydown</span>=<span class="hljs-string">"
+  handleCostKeyDown(event);
+  "</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">"
+  calculateTotal();
+  "</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"calculate-button"</span>&gt;</span>Calculate<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"js-total-cost"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+    <span class="hljs-comment">//if a string contain only a number, and we -*/ =&gt; ti will converted into a number.</span>
+    <span class="hljs-comment">//Type Coersion =&gt; automatic type conversion. Don't do maths using string.</span>
+    string(<span class="hljs-number">25</span>);
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'25'</span> - <span class="hljs-number">5</span>); <span class="hljs-comment">//this will work.</span>
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'25'</span> + <span class="hljs-number">5</span>); <span class="hljs-comment">//but this will not work. that's wy don't do maths using string.</span>
+
+
+    <span class="hljs-comment">//Document Object represent the WebPage.</span>
+    <span class="hljs-comment">//Window Object represent the Browser. which means everything inside the browser is inside the window Object.</span>
+    <span class="hljs-built_in">window</span>.document <span class="hljs-comment">// Javascript has shortcut for this you can write document only javascript will automatically write window for us.</span>
+    
+
+    <span class="hljs-comment">// Object provided by javascript and it contain the information about the event. Every eventListeners also get the event object. (event.key) will tell us which key is pressed by us on keyboard.</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handleCostKeyDown</span>(<span class="hljs-params">event</span>)</span>{ <span class="hljs-comment">// this will take the event object and put it inside the function.</span>
+
+      <span class="hljs-keyword">if</span>(event.key === <span class="hljs-string">'Enter'</span>){
+      calculateTotal();
+      }
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">calculateTotal</span>(<span class="hljs-params"></span>)</span>{
+      <span class="hljs-keyword">const</span> inputElement = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'.js-cost-input'</span>);
+      <span class="hljs-keyword">let</span> cost =<span class="hljs-built_in">Number</span>(inputElement.value);  <span class="hljs-comment">// This will give us the text inside the text box. The value would be a string if we don't apply Number() --&gt; a function.</span>
+
+      <span class="hljs-comment">//Whenever we get a value from a DOM the value will be a string. We have to manually convert the value according to our need.</span>
+
+      <span class="hljs-comment">//onkeydown Attribute will help us to run javascript when we press any key on keyboard.</span>
+
+      <span class="hljs-comment">//clicks, keydowns =&gt; events</span>
+      <span class="hljs-comment">//onclick, onkeydown =&gt; event listeners means they check the event and runs javascript when those events happens.</span>
+
+      <span class="hljs-comment">// Event listeners</span>
+      <span class="hljs-comment">//onclick = click</span>
+      <span class="hljs-comment">//onkeydown = key press</span>
+      <span class="hljs-comment">//onscroll = scrolling</span>
+      <span class="hljs-comment">//onmouseenter = hovering over</span>
+      <span class="hljs-comment">//onmouseleave = stop hovering over</span>
+
+
+      <span class="hljs-keyword">if</span>(cost &lt; <span class="hljs-number">40</span>){
+        cost += <span class="hljs-number">10</span>;
+        cost = cost.toFixed(<span class="hljs-number">2</span>);
+        cost = <span class="hljs-built_in">Number</span>(cost);
+      }
+
+      <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'.js-total-cost'</span>)
+        .innerHTML = <span class="hljs-string">`$<span class="hljs-subst">${cost}</span>`</span>;
+    }
+    
+    <span class="hljs-comment">//.classList --&gt; gives us control of the class attribute.It is  an object. </span>
+    <span class="hljs-comment">//.add() =&gt; add a class to our element.</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">subscribe</span>(<span class="hljs-params"></span>)</span>{
+      <span class="hljs-keyword">const</span> buttonElement = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'.js-subscribe-button'</span>);
+
+      <span class="hljs-keyword">if</span>(buttonElement.innerText === <span class="hljs-string">'Subscribe'</span>){
+        buttonElement.innerHTML = <span class="hljs-string">'Subscribed'</span>;
+        buttonElement.classList.add(<span class="hljs-string">'is-subscribed'</span>);
+      } <span class="hljs-keyword">else</span> {
+        buttonElement.innerHTML = <span class="hljs-string">'Subscribe'</span>;
+        buttonElement.classList.remove(<span class="hljs-string">'is-subscribed'</span>)
+      }
+    }
+  </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</div></code></pre>
+<blockquote>
+<h1 id="arrays-and-loops">Arrays and Loops</h1>
+</blockquote>
+<pre class="hljs"><code><div>    <span class="hljs-comment">//Arrrays --&gt; another type of value and it represents a list of values.we use this bracket for array [] , inside an array we can put any type of value. array is an special type of objects.</span>
+
+    <span class="hljs-keyword">const</span> myArray = [<span class="hljs-number">10</span>, <span class="hljs-number">20</span>, <span class="hljs-number">30</span>];
+    <span class="hljs-built_in">console</span>.log(myArray);
+
+    <span class="hljs-built_in">console</span>.log(myArray[<span class="hljs-number">0</span>]);
+    myArray[<span class="hljs-number">0</span>] = <span class="hljs-number">99</span>; <span class="hljs-comment">//changing value in array 0 represents index.Zero based counting.</span>
+    <span class="hljs-built_in">console</span>.log(myArray);
+
+    [<span class="hljs-number">1</span>, <span class="hljs-string">'hello'</span>, <span class="hljs-literal">true</span>, { <span class="hljs-attr">name</span>: <span class="hljs-string">'socks'</span>}, [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>]];
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>]); <span class="hljs-comment">//object</span>
+
+    <span class="hljs-comment">//something is array or not.</span>
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Array</span>.isArray[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>]);
+
+    <span class="hljs-comment">//Arrays has properties and methods.</span>
+    <span class="hljs-built_in">console</span>.log(myArray.length);
+
+    <span class="hljs-comment">//.push() =&gt; adds a value to the end of the Array.</span>
+    myArray.push(<span class="hljs-number">100</span>);
+    <span class="hljs-built_in">console</span>.log(myArray);
+
+    <span class="hljs-comment">//.splice() =&gt; removes a  value from an array. splice takes two number first one is index and second one is Number of values to remove.</span>
+    myArray.splice(<span class="hljs-number">0</span>, <span class="hljs-number">2</span>);
+    <span class="hljs-built_in">console</span>.log(myArray);
+
+
+    <span class="hljs-comment">//Loops and 3 major parts of a loop.</span>
+    <span class="hljs-comment">//every time we run the loop this is called iteration.so there are 5 iteration.</span>
+
+    <span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span>; <span class="hljs-comment">//loop variable</span>
+
+    <span class="hljs-keyword">while</span>(i &lt;= <span class="hljs-number">5</span>){ <span class="hljs-comment">//loop condition</span>
+      <span class="hljs-built_in">console</span>.log(i);
+      i++; <span class="hljs-comment">//increment step</span>
+    }
+
+
+    <span class="hljs-comment">///for loop =&gt; standard loop.</span>
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">5</span>; i++){
+      <span class="hljs-built_in">console</span>.log(i);
+    }
+
+    <span class="hljs-comment">//Non-standard loop.bit more flexible</span>
+    <span class="hljs-keyword">let</span> randomNumber = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">while</span>(randomNumber &lt; <span class="hljs-number">0.5</span>){
+      randomNumber = <span class="hljs-built_in">Math</span>.random();
+    }
+    <span class="hljs-built_in">console</span>.log(randomNumber);
+
+    <span class="hljs-comment">//Looping through an Array.</span>
+    <span class="hljs-keyword">const</span> todoList = [
+      <span class="hljs-string">'make dinner'</span>,
+      <span class="hljs-string">'wash dishes'</span>,
+      <span class="hljs-string">'watch youtube'</span>
+    ];
+
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; todoList.length; i++){
+      <span class="hljs-keyword">const</span> value = todoList[i];
+      <span class="hljs-built_in">console</span>.log(value);
+    }
+
+    <span class="hljs-comment">//Accumulator pattern</span>
+    <span class="hljs-comment">//1. Create a variable to store the result.</span>
+    <span class="hljs-comment">//2. Loop through the array and update the result.</span>
+    
+    <span class="hljs-keyword">const</span> nums = [<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">3</span>];
+    <span class="hljs-keyword">let</span> total = <span class="hljs-number">0</span>; <span class="hljs-comment">//Accumulator variable to store result.</span>
+
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; nums.length; i++){
+      <span class="hljs-keyword">const</span> num = nums[i];
+      total += num;
+    }
+    <span class="hljs-built_in">console</span>.log(total);
+
+
+    <span class="hljs-keyword">const</span> numsDoubled = [];
+
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; nums.length; i++){
+      <span class="hljs-keyword">const</span> num = nums[i];
+      numsDoubled.push(num * <span class="hljs-number">2</span>);
+    }
+
+    <span class="hljs-built_in">console</span>.log(numsDoubled);
+
+    <span class="hljs-comment">//Arrays and Objects are references.</span>
+    <span class="hljs-keyword">const</span> array1 = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];
+    <span class="hljs-keyword">const</span> array2 = array1.slice(); <span class="hljs-comment">// this will create a copy of values in array1 and now these two variables point to two different arrays. [.splice() --&gt;Remove values and .slice() are two different things]</span>
+
+    array2.push(<span class="hljs-number">4</span>); <span class="hljs-comment">// now this line will only affect array.</span>
+    <span class="hljs-built_in">console</span>.log(array1);
+    <span class="hljs-built_in">console</span>.log(array2);
+
+    <span class="hljs-comment">//By using destructuring.</span>
+    <span class="hljs-comment">//Get first and second value</span>
+    <span class="hljs-keyword">const</span> [firstValue, secondValue] = [<span class="hljs-number">4</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]; <span class="hljs-comment">// this will take first value out of the array and put it inside the variable firstValue and so on...</span>
+    <span class="hljs-built_in">console</span>.log(firstValue);
+    <span class="hljs-built_in">console</span>.log(secondValue);
+
+
+    <span class="hljs-comment">// break =&gt; let us stop a loop early.</span>
+    <span class="hljs-comment">// continue lets us skip 1 iteration/run of a loop.</span>
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">10</span>; i++){
+      <span class="hljs-keyword">if</span>(i % <span class="hljs-number">3</span> === <span class="hljs-number">0</span>){
+        <span class="hljs-keyword">continue</span>;
+      }
+      <span class="hljs-built_in">console</span>.log(i);
+      <span class="hljs-keyword">if</span>(i === <span class="hljs-number">8</span>){
+        <span class="hljs-keyword">break</span>;
+      }
+    }
+
+    <span class="hljs-keyword">let</span> a = <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">while</span>(a &lt;= <span class="hljs-number">10</span>){
+      <span class="hljs-keyword">if</span>(a % <span class="hljs-number">3</span> === <span class="hljs-number">0</span>){ <span class="hljs-comment">// in a while loop continue also skip increment step this will cause a infinte loop.</span>
+        a++;
+        <span class="hljs-keyword">continue</span>;
+      }
+      <span class="hljs-built_in">console</span>.log(a);
+      a++;
+    }
+
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">doubleArray</span>(<span class="hljs-params">nums</span>)</span>{
+      <span class="hljs-keyword">const</span> numsDoubled = [];
+
+      <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; nums.length; i++){
+        <span class="hljs-keyword">const</span> num = nums[i];
+        <span class="hljs-keyword">if</span>(num === <span class="hljs-number">0</span>){
+          <span class="hljs-keyword">return</span> numsDoubled; <span class="hljs-comment">// this will end the loop immediately.</span>
+        }
+        numsDoubled.push(num * <span class="hljs-number">2</span>);
+      }
+      <span class="hljs-keyword">return</span> numsDoubled;
+    }
+
+    <span class="hljs-built_in">console</span>.log(doubleArray([<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">3</span>,<span class="hljs-number">0</span>,<span class="hljs-number">5</span>]));
+</div></code></pre>
+<blockquote>
+<h1 id="advanced-functions">Advanced Functions</h1>
+</blockquote>
+<pre class="hljs"><code><div>    <span class="hljs-comment">//Hoisting --&gt; which means we can call the function before we created.using hoisting we don't need to worry about the order of writing code.</span>
+
+    greeting();
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">greeting</span>(<span class="hljs-params"></span>)</span>{
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'hello'</span>);
+    }
+    greeting(); <span class="hljs-comment">//calling the function. function are values.</span>
+
+
+    <span class="hljs-comment">//Hoisting Doesn't work when we create a function and save it in a variable. like below</span>
+    <span class="hljs-keyword">const</span> function1 = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{ <span class="hljs-comment">//Now this is become a Anonymous function which means function without a name.</span>
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'hello2'</span>);
+    };
+    <span class="hljs-built_in">console</span>.log(function1);
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> function1);
+    function1();
+
+
+    <span class="hljs-keyword">const</span> object1 = {
+      <span class="hljs-attr">num</span>: <span class="hljs-number">2</span>,
+      <span class="hljs-comment">//method --&gt; function inside an object.</span>
+      <span class="hljs-attr">fun</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>)</span>{ <span class="hljs-comment">//anonymous function</span>
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'hello3'</span>);
+      }
+    };
+    object1.fun();
+
+
+    <span class="hljs-comment">//Passing a function into an another function</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">run</span>(<span class="hljs-params">param</span>)</span>{
+      param();
+    }
+    run(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{  <span class="hljs-comment">//callback function</span>
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'hello4'</span>);
+    });
+
+
+    <span class="hljs-comment">//setTimeout() --&gt; allows us to run a function in the future.built-in function.takes two parameter first parameter is a function that we want to run in the future. The second parameter is how long to wait before running this function(a number in milliseconds).1000 milliseconds = 1 second.</span>
+    setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'timeout'</span>);
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'timeout2'</span>);
+    }, <span class="hljs-number">3000</span>);
+
+    <span class="hljs-comment">//Asynchronous code --&gt; the computer won't wait for a line to finish before going to the next line. eg: setTimeout() [Advantage: it doesn't block our code for 3 seconds].</span>
+
+    <span class="hljs-comment">//Synchronous code --&gt; the computer will wait for a line to finish before going to the next line.</span>
+
+    <span class="hljs-comment">//All the code we normally write is synchronous code.</span>
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'next line'</span>);
+
+    setInterval(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{  <span class="hljs-comment">// This will run the after every 3 seconds.</span>
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'interval'</span>); 
+    }, <span class="hljs-number">3000</span>);
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'next line 2'</span>);
+
+    [
+      <span class="hljs-string">'make dinner'</span>,
+      <span class="hljs-string">'wash dishes'</span>,
+      <span class="hljs-string">'watch youtube'</span>
+    ].forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">value, index</span>) </span>{  <span class="hljs-comment">// forEach() method allows us to loop through this array.It is the preferred way to loop through an array.because it is easier to read.</span>
+
+      <span class="hljs-keyword">if</span>(value === <span class="hljs-string">'wash dishes'</span>){
+        <span class="hljs-keyword">return</span>;  <span class="hljs-comment">// this will do the same thing as continue do in for loop.</span>
+      }
+      <span class="hljs-built_in">console</span>.log(index);
+      <span class="hljs-built_in">console</span>.log(value);
+    });
+
+    <span class="hljs-comment">//forEach() method don't have continue but we can do the same thing by using return statement.</span>
+
+</div></code></pre>
+
+</body>
+</html>

@@ -1,0 +1,125 @@
+body{
+  background-color: rgb(25, 25, 25);
+  color: #ffff;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 50px;
+}
+
+.title{
+  font-size: 30px;
+  font-weight: bold;
+  font-family: 'Courier New', Courier, monospace;;
+}
+
+.move-icon{
+  height: 50px;
+}
+
+.move-button{
+  background-color: transparent;
+  border: 3px solid #ffff;
+  width: 120px;
+  height: 120px;
+  border-radius: 60px;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: 0.01s;
+}
+
+.move-button:active{
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15);
+  background-color: #4267B2;
+  border-color: black;
+}
+
+.result{
+  font-size: 25px;
+  font-weight: bold;
+  margin-top: -8px;
+  display: flex;
+  flex: 1;
+  padding: 10px;
+  height: 20px;
+  width: 110px;
+  align-items: center;
+  justify-content: center;
+  /* background-color: darkred;
+  color: white;
+  border-radius: 2px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(104, 102, 102);
+  box-shadow: none; */
+
+  background: linear-gradient(25deg, darkred, darkred);
+  color: white;
+  box-shadow: inset 2px -1px 1px 0 rgba(255, 255, 255, .2),
+    inset -3px 2px 5px 0 rgba(0, 0, 0, .2),
+    4px 1px 1px 0 rgba(0, 0, 0, .5),
+    -1px -3px 1px 0 rgba(0, 0, 0, .5),
+    4px -3px 1px 0 rgba(0, 0, 0, .5),
+    -1px -1px 5px 0 rgba(0, 0, 0, .5);
+}
+
+.result-box{
+  margin-top: 40px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.score{
+  margin-top: 60px;
+}
+
+.reset-score-button,
+.auto-play-button{
+  background-color: #ffff;
+  border: none;
+  font-size: 15px;
+  padding: 8px 15px;
+  cursor: pointer;
+  transition: 0.02s;
+}
+
+.reset-score-button:active{
+  background-color: #FF9900;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15);
+  border: none;
+}
+
+.auto-play-button:active{
+  background-color: #FF9900;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
+  border: none;
+}
+
+.stop-playing{
+  background-color: #FF9900;
+}
+
+.warning-text{
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.yes-button{
+  background-color: rgb(190, 9, 9);
+  border: none;
+  color: white;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  cursor: pointer;
+}
+.yes-button:hover{
+  opacity: 0.8;
+}
+
+.no-button{
+  background-color: #4267B2;
+  border: none;
+  color: white;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  cursor: pointer;
+}
+.no-button:hover{
+  opacity: 0.8;
+}

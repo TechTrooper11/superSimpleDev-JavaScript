@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Practise</title>
+  </head>
+  <body>
+    <!-- <button onclick="console.log(`Total Items: ` + cartQuantity);">Show Quantity</button>
+
+  <button onclick="cartQuantity++;
+  console.log(`Cart Quantitiy: ` + cartQuantity);">Add to Cart</button>
+
+  <button onclick="cartQuantity += 2;
+  console.log(`Cart Quantitiy: ` + cartQuantity);">+2</button>
+
+  <button onclick="cartQuantity += 3;
+  console.log(`Cart Quantitiy: ` + cartQuantity);">+3</button>
+
+  <button onclick="cartQuantity = 0;
+  console.log(`Cart Quantitiy: ` + cartQuantity);">Reset Cart</button> -->
+
+    <script>
+      let cartQuantity = '';
+      let sum = 0;
+      function addSum(num){
+        sum = sum + num;
+        return sum;
+      }
+      sum = 10;
+      console.log(addSum(10));
+
+      let result = '';
+      function sum(a, b){
+        result = a + b;
+        return result;
+      }
+      console.log(`Addition of your args is here: ` + sum(10, 30));
+
+      function aree(){
+        const arr = [1, 2, 3, 4, 5];
+        arr.push("Hello");
+        const removed = arr.shift();
+        arr.unshift("myLife, hello (where are you?)");
+        return arr;
+      }
+      console.log(aree())
+
+        function nextInLine(arr, item) {
+          // Only change code below this line
+          arr.push(item);
+          const removed = arr.shift();
+          return removed;
+          // Only change code above this line
+        }
+        // Setup
+        let testArr = [1, 2, 3, 4, 5];
+
+        // Display code
+        console.log("Before: " + JSON.stringify(testArr));
+        console.log(nextInLine(testArr, 6));
+        console.log("After: " + JSON.stringify(testArr));
+
+      function test(myCondition){
+        if(myCondition){
+          return "It was true!";
+        }
+        return "It was false!";
+      }
+
+      console.log(test(true));
+      console.log(test(false));
+
+      //ARRAYS
+      const sequence = [1, 1, 2, 3 , 5, 8, 13];
+      const random = ["tree", 795, [0, 1, 2, 'hello'], "shiwati"];
+      console.log(random.length);
+      console.log(random[2][3]);
+
+      const shopping = ["bread", "milk", "cheese", "hummus", "noodles"];
+      shopping[0] = 'tahini';
+      console.log(shopping);
+
+      let birds = ["Parrot", "Falcon", "Owl"];
+      console.log(birds.indexOf("Falcon"));
+      console.log(birds.indexOf("rabbit"));
+
+      let cities = ["Manchester", "Liverpool"];
+      const newLength = cities.push("Bristol");
+      console.log('New Length of cities array: ' + newLength);
+      console.log(cities);
+
+      cities.unshift("Edinburgh");
+      console.log(cities);
+      const removedLast = cities.pop();
+      console.log(removedLast);
+      const removedFirst = cities.shift();
+      console.log(removedFirst);
+
+      cities = ["Manchester", "Liverpool", "Edinburgh", "Carlisle"];
+      const index = cities.indexOf("Manchester");
+      if(index != -1){
+        const splicedCities = cities.splice(index, 1);
+        console.log(splicedCities);
+      }
+
+      birds = ["Parrot", "Falcon", "Owl"];
+
+      for(const bird of birds){
+        console.log(bird);
+      }
+
+      function double(number){
+        return number * 2;
+      }
+      const number = [5, 2, 7, 6];
+      const doubled = number.map(double);
+      console.log(doubled);
+
+      function isLong(city){
+        return city.length > 8;
+      }
+      cities = ["London", "Liverpool", "Totnes", "Edinburgh"];
+
+      const longer = cities.filter(isLong);
+      console.log(longer);
+
+      const data = "Manchester,London,Liverpool,Birmingham,Leeds,Carlisle";
+      console.log(data);
+
+      cities = data.split(",");
+      console.log(cities);
+
+      console.log(cities.length);
+      console.log(cities[0]);
+      console.log(cities[1]);
+      console.log(cities[cities.length - 1]);
+
+      const commaSeparated = cities.join(",");
+      console.log(commaSeparated);
+
+      const data2 = "India,Europe,USA,Manchester,London,Liverpool,Birmingham,Leeds,Carlisle";
+
+      const ArrayBySplit = data2.split(",");
+      console.log(ArrayBySplit);
+
+      const ArrayByJoin = ArrayBySplit.join(", ");
+      console.log(ArrayByJoin);
+
+      const dogNames = ["Rocket", "Flash", "Bella", "Slugger"];
+      console.log(dogNames);
+      console.log(dogNames.toString());
+
+      //FUNCTIONS.
+
+      function myFunc(theObject){
+        theObject.make = "Toyota";
+      }
+
+      const mycar = {
+        make: "Honda",
+        model: "Accord",
+        year: 1998,
+      };
+
+      console.log(mycar.make);
+      myFunc(mycar);
+      console.log(mycar.make);
+
+      //eloquent book
+      const humus = function (factor) {
+        const ingredient = function (amount, unit, name) {
+          let ingredientAmount = amount * factor;
+          if (ingredientAmount > 1) {
+            unit += 's';
+          }
+          console.log(`${ingredientAmount} ${unit} ${name}`);
+        };
+
+        ingredient(1, 'can', 'chickpeas');
+        ingredient(0.25, 'cup', 'tahini');
+        ingredient(0.25, 'cup', 'lemon juice');
+        ingredient(1, 'clove', 'garlic');
+        ingredient(2, 'tablespoon', 'olive oil');
+        ingredient(0.5, 'teaspoon', 'cumin');
+      };
+      console.log(`${ingredientAmount} ${unit} ${name}`);
+
+      //eloquent book
+      function findSolution(target) {
+        function find(current, history) {
+          if (current == target) {
+            return history;
+          } else if (current > target) {
+            return null;
+          } else {
+            return find(current + 5, `(${history} + 5)`) || find(current * 3, `(${history} * 3)`);
+          }
+        }
+        return find(1, "1");
+      }
+      console.log(findSolution(24));
+    </script>
+  </body>
+</html>

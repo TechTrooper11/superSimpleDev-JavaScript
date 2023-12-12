@@ -1,0 +1,14 @@
+{
+    "markdown.preview.fontSize": 14,
+    "markdown.preview.fontFamily": "Consolas, 'Courier New', monospace",
+    "editor.fontFamily": "Consolas, 'Courier New', monospace",
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "markdown-pdf.breaks": true,
+    "markdown-pdf.convertOnSave": true,
+    "markdown-pdf.footerTemplate": "<div style=\"font-size: 9px; margin: 0 auto;\"> <span class='pageNumber'></span> / <span class='totalPages'></span></div>",
+    "markdown-pdf.headerTemplate": "<div style=\"font-size: 9px; margin-left: 1cm;\"> <span class='title'></span></div> <div style=\"font-size: 9px; margin-left: auto; margin-right: 1cm; \">%%ISO-DATE%%</div>",
+    "markdown-pdf.highlightStyle": "monokai-sublime.css",
+    "markdown-pdf.styles": [".vscode/markdown.css"],
+    "liveServer.settings.port": 5501
+}

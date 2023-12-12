@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Document</title>
+</head>
+
+<style>
+  body{
+    font-family: Arial, Helvetica, sans-serif;
+  }
+</style>
+
+<body>
+  
+  <p>THE () ? : TERNARY OPERATORS</p>
+  <p>Input your age and click the button</p>
+
+  <input type="text" id="age" value="18">
+
+  <button onclick="myFunction()">Try it.</button>
+
+  <p id="demo"></p>
+
+  <script>
+    function myFunction(){
+      let age = document.getElementById('age').value;  
+      let voteable = (age < 18)? "Too young":"Old enough";
+      document.getElementById('demo').innerHTML = voteable + "to vote.";
+
+    }
+    
+  </script>
+
+
+  <script>
+    console.log("2" > "20");
+  </script>
+
+    <hr>
+    <p>Convert fahrenheit to celsius</p>
+
+    <input type="text" placeholder="Type here" id="temp">
+
+    <button onclick="tocelsius()">Convert</button>
+
+    <p id="demo1"></p>
+  <script>
+    function tocelsius(f){
+      return (5/9) * (f-32);
+    }
+
+    let value = tocelsius();
+    document.getElementById('demo1').innerHTML = value;
+
+
+  </script>
+  
+</body>
+</html>
